@@ -26,7 +26,6 @@ public class CreateIssueTest extends BaseTest {
 
     @Test
     @Tag("create")
-    @Tag("positive")
     @DisplayName("Should create a valid issue")
     void testIssueCreation() {
         // populate random title and description for an issue
@@ -64,7 +63,6 @@ public class CreateIssueTest extends BaseTest {
 
     @Test
     @Tag("create")
-    @Tag("positive")
     @DisplayName("Should create a valid task")
     void testTaskCreation() {
         // populate random title and description for an issue
@@ -124,7 +122,6 @@ public class CreateIssueTest extends BaseTest {
     }
 
     @Tag("create")
-    @Tag("negative")
     @ParameterizedTest(name = "{0}")
     @DisplayName("Should test all the values, lead to code 400 as test values are intentionally invalid")
     @MethodSource("invalidIssueData")
@@ -139,7 +136,6 @@ public class CreateIssueTest extends BaseTest {
 
     @Test
     @Tag("create")
-    @Tag("positive")
     @DisplayName("Should create a valid issue with emoji")
     void testIssueCreationWithEmoji() {
         // populate random title and description for an issue with emoji. Emoji usually requires another DB encoding

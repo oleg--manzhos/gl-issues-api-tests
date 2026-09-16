@@ -62,7 +62,6 @@ class ReadIssueTest extends BaseTest {
 
     @Test
     @Tag("read")
-    @Tag("positive")
     @DisplayName("Should display issues in Open state")
     void shouldFilterIssuesByOpenedState() {
         Map<String, String> filter = Map.of("state", "opened");
@@ -77,7 +76,6 @@ class ReadIssueTest extends BaseTest {
 
     @Test
     @Tag("read")
-    @Tag("positive")
     @DisplayName("Should display issues in Closed status")
     void shouldFilterIssuesByClosedState() {
         Map<String, String> filter = Map.of("state", "closed");
@@ -93,7 +91,6 @@ class ReadIssueTest extends BaseTest {
 
     @Test
     @Tag("read")
-    @Tag("positive")
     @DisplayName("Should filter issues by label: backend")
     void shouldFilterIssuesByBackendLabel() {
         Map<String, String>  filter = Map.of("labels", "backend");
@@ -109,7 +106,6 @@ class ReadIssueTest extends BaseTest {
 
     @Test
     @Tag("read")
-    @Tag("positive")
     @DisplayName("Should filter issues by label: backend, frontend")
     void shouldFilterIssuesByFrontendLabel() {
         Map<String, String> filter = Map.of("labels", "frontend,backend");
@@ -122,7 +118,6 @@ class ReadIssueTest extends BaseTest {
 
     @Test
     @Tag("read")
-    @Tag("positive")
     @DisplayName("Search issue by unique attribute: title")
     void shouldSearchIssuesByUniqueText() {
         Map<String, String> filter = Map.of("search",  title);
@@ -136,7 +131,6 @@ class ReadIssueTest extends BaseTest {
 
     @Test
     @Tag("read")
-    @Tag("positive")
     @DisplayName("Should filter issues by Confidential flag")
     void shouldFilterIssuesByConfidentialFlag() {
         Map<String, String> filter = Map.of("confidential", "true");
@@ -149,7 +143,6 @@ class ReadIssueTest extends BaseTest {
 
     @Test
     @Tag("read")
-    @Tag("positive")
     @DisplayName("Should filter by Incident type")
     void shouldFilterIssuesByIncidentType() {
         Map<String, String> filter = Map.of("issue_type", "incident");

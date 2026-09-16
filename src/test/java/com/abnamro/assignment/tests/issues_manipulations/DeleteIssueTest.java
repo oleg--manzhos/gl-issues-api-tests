@@ -32,7 +32,6 @@ public class DeleteIssueTest extends BaseTest {
 
     @Test
     @Tag("delete")
-    @Tag("positive")
     @DisplayName("Should delete n existing issue")
     void deleteExistingIssueTest(){
         // delete issue with existing iid
@@ -68,7 +67,6 @@ public class DeleteIssueTest extends BaseTest {
 
     @Test
     @Tag("delete")
-    @Tag("positive")
     @DisplayName("Should remove a removed issue without errors")
     void testIssueDeletionTwice() {
         // delete existing issue 1st time

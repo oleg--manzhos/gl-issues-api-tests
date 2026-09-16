@@ -37,12 +37,6 @@ on:
         type: boolean
         default: true
 
-      positive:
-        description: 'Run All Positive tests'
-        required: true
-        type: boolean
-        default: true
-
       negative:
         description: 'Run All Negative tests'
         required: true

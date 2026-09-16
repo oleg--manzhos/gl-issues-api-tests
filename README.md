@@ -149,7 +149,6 @@ create
 read
 update
 delete
-positive
 negative
 ```
 
@@ -179,7 +178,6 @@ Create
 Read
 Update
 Delete
-Positive
 Negative
 ```
 Individual categories can be disabled before starting the workflow. Disabled categories are passed to Maven as excluded JUnit tags.

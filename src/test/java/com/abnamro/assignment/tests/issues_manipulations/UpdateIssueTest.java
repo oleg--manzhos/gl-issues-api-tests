@@ -34,7 +34,6 @@ public class UpdateIssueTest extends BaseTest {
 
     @Test
     @Tag("update")
-    @Tag("positive")
     @DisplayName("Should update all mentioned fields in a created issue")
     void shouldUpdateAllIssueFieldsTest(){
         // This update implemented not like PUT, where you have to provide the complete JSON,
@@ -80,7 +79,6 @@ public class UpdateIssueTest extends BaseTest {
 
     @Test
     @Tag("update")
-    @Tag("positive")
     @DisplayName("Should move created issue in 'open' state to 'closed' state")
     void shouldCloseCreatedIssueTest(){
         UpdateIssueRequestDto updateBody = UpdateIssueRequestDto.builder()
@@ -103,7 +101,6 @@ public class UpdateIssueTest extends BaseTest {
 
     @Test
     @Tag("update")
-    @Tag("positive")
     @DisplayName("Should reopen issue")
     void shouldReopenCreatedIssueTest(){
         UpdateIssueRequestDto updateBody = UpdateIssueRequestDto.builder()
@@ -142,7 +139,6 @@ public class UpdateIssueTest extends BaseTest {
 
     @Test
     @Tag("update")
-    @Tag("positive")
     @DisplayName("Should assign create issue to a user (myself)")
     void assignToUserTest(){
         // an interesting observation here: I can assign the issue from my project to any existing user of GL,
