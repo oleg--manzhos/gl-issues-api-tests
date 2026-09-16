@@ -1,0 +1,60 @@
+{
+  "info": {
+    "_postman_id": "71a71ba4-d5a3-4237-9661-5de4c1d360c3",
+    "name": "Get Access Token",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "3034687"
+  },
+  "item": [
+    {
+      "name": "Get authorization code",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "client_id",
+              "value": ""
+            },
+            {
+              "key": "client_secret",
+              "value": ""
+            },
+            {
+              "key": "code",
+              "value": ""
+            },
+            {
+              "key": "grant_type",
+              "value": "authorization_code"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "http://localhost:8080"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://gitlab.com/oauth/token",
+          "protocol": "https",
+          "host": [
+            "gitlab",
+            "com"
+          ],
+          "path": [
+            "oauth",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

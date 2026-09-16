@@ -1,0 +1,105 @@
+name: GitLab Issues API Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_id:
+        description: 'GitLab project ID'
+        required: true
+        type: string
+
+      auth_token:
+        description: 'GitLab OAuth access token'
+        required: true
+        type: string
+
+      create:
+        description: 'Run Create tests'
+        required: true
+        type: boolean
+        default: true
+
+      read:
+        description: 'Run Read tests'
+        required: true
+        type: boolean
+        default: true
+
+      update:
+        description: 'Run Update tests'
+        required: true
+        type: boolean
+        default: true
+
+      delete:
+        description: 'Run Delete tests'
+        required: true
+        type: boolean
+        default: true
+
+      positive:
+        description: 'Run All Positive tests'
+        required: true
+        type: boolean
+        default: true
+
+      negative:
+        description: 'Run All Negative tests'
+        required: true
+        type: boolean
+        default: true
+
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Build excluded tags
+        id: tags
+        shell: bash
+        run: |
+          EXCLUDED=""
+
+          if [[ "${{ inputs.create }}" == "false" ]]; then
+            EXCLUDED="${EXCLUDED:+$EXCLUDED,}create"
+          fi
+
+          if [[ "${{ inputs.read }}" == "false" ]]; then
+            EXCLUDED="${EXCLUDED:+$EXCLUDED,}read"
+          fi
+
+          if [[ "${{ inputs.update }}" == "false" ]]; then
+            EXCLUDED="${EXCLUDED:+$EXCLUDED,}update"
+          fi
+
+          if [[ "${{ inputs.delete }}" == "false" ]]; then
+            EXCLUDED="${EXCLUDED:+$EXCLUDED,}delete"
+          fi
+
+          if [[ "${{ inputs.positive }}" == "false" ]]; then
+            EXCLUDED="${EXCLUDED:+$EXCLUDED,}positive"
+          fi
+
+          if [[ "${{ inputs.negative }}" == "false" ]]; then
+            EXCLUDED="${EXCLUDED:+$EXCLUDED,}negative"
+          fi
+
+          echo "excluded=$EXCLUDED" >> "$GITHUB_OUTPUT"
+          echo "Excluded tags: $EXCLUDED"
+
+      - name: Run API tests
+        run: >
+          mvn clean test
+          -Dproject_id="${{ inputs.project_id }}"
+          -Dauth_token="${{ inputs.auth_token }}"
+          -DexcludedGroups="${{ steps.tags.outputs.excluded }}"
